@@ -15,16 +15,7 @@
  */
 package eu.fasten.core.maven.resolution;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import eu.fasten.core.json.ObjectMapperBuilder;
-import eu.fasten.core.maven.data.Dependency;
-import eu.fasten.core.maven.data.Pom;
-import org.apache.commons.io.FileUtils;
-import org.jooq.DSLContext;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static eu.fasten.core.data.metadatadb.codegen.tables.PackageVersions.PACKAGE_VERSIONS;
 
 import java.io.File;
 import java.io.IOException;
@@ -34,7 +25,18 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static eu.fasten.core.data.metadatadb.codegen.tables.PackageVersions.PACKAGE_VERSIONS;
+import org.apache.commons.io.FileUtils;
+import org.jooq.DSLContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import eu.fasten.core.json.FastenObjectMapperBuilder;
+import eu.fasten.core.maven.data.Dependency;
+import eu.fasten.core.maven.data.Pom;
 
 public class MavenResolverIO {
 
@@ -46,7 +48,7 @@ public class MavenResolverIO {
     private final int PG_FETCH_SIZE = 10000;
 
     public MavenResolverIO(DSLContext dbContext, File baseDir) {
-        this(dbContext, baseDir, new ObjectMapperBuilder().build());
+        this(dbContext, baseDir, new FastenObjectMapperBuilder().build());
     }
 
     public MavenResolverIO(DSLContext dbContext, File baseDir, ObjectMapper om) {

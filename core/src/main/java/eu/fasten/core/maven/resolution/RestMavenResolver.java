@@ -24,7 +24,7 @@ import org.glassfish.jersey.client.ClientConfig;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import eu.fasten.core.json.ObjectMapperBuilder;
+import eu.fasten.core.json.FastenObjectMapperBuilder;
 import eu.fasten.core.maven.data.ResolvedRevision;
 import eu.fasten.core.maven.data.Scope;
 import jakarta.ws.rs.client.ClientBuilder;
@@ -39,7 +39,7 @@ public class RestMavenResolver implements IMavenResolver {
     private static final int DEFAULT_LIMIT = ResolverConfig.resolve().limit;
 
     private static final GenericType<Set<ResolvedRevision>> SET_OF_REV = new GenericType<Set<ResolvedRevision>>() {};
-    private static final ObjectMapper OM = new ObjectMapperBuilder().build();
+    private static final ObjectMapper OM = new FastenObjectMapperBuilder().build();
 
     private WebTarget baseTarget;
 

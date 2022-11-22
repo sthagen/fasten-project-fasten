@@ -31,7 +31,7 @@ import org.junit.jupiter.api.Test;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
-import eu.fasten.core.json.ObjectMapperBuilder;
+import eu.fasten.core.json.FastenObjectMapperBuilder;
 
 public class PomTest {
 
@@ -308,7 +308,7 @@ public class PomTest {
     }
 
     private static Pom jsonRoundtrip(Pom sut) throws JsonProcessingException, JsonMappingException {
-        var om = new ObjectMapperBuilder().build();
+        var om = new FastenObjectMapperBuilder().build();
         var json = om.writeValueAsString(sut);
         // make sure custom serializers are registered
         assertTrue(json.contains("\"v\":[\"0\"]"));

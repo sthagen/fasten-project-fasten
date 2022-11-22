@@ -43,7 +43,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import eu.fasten.core.json.ObjectMapperBuilder;
+import eu.fasten.core.json.FastenObjectMapperBuilder;
 import eu.fasten.core.maven.data.Dependency;
 import eu.fasten.core.maven.data.Exclusion;
 import eu.fasten.core.maven.data.Pom;
@@ -54,7 +54,7 @@ import eu.fasten.core.maven.data.VersionConstraint;
 
 public class MavenResolverIOTest {
 
-    private static final ObjectMapper OM = new ObjectMapperBuilder().build();
+    private static final ObjectMapper OM = new FastenObjectMapperBuilder().build();
 
     @TempDir
     public File tempDir;

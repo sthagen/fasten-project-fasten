@@ -47,7 +47,7 @@ public class CoreMavenDataModuleTest {
 
     @BeforeEach
     public void setup() {
-        om = new ObjectMapperBuilder() {
+        om = new FastenObjectMapperBuilder() {
             @Override
             protected ObjectMapper addMapperOptions(ObjectMapper om) {
                 return om.enable(SerializationFeature.INDENT_OUTPUT);

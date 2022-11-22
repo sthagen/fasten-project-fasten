@@ -289,11 +289,12 @@
     
     <repositories>
         <repository>
-            <id>github</id>
+            <id>github-cops-lab-test-utils</id>
             <url>https://maven.pkg.github.com/cops-lab/test-utils/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
+        </repository>
+        <repository>
+            <id>github-cops-lab-io</id>
+            <url>https://maven.pkg.github.com/cops-lab/io/</url>
         </repository>
     </repositories>
 
