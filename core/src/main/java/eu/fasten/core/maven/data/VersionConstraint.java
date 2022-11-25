@@ -15,8 +15,8 @@
  */
 package eu.fasten.core.maven.data;
 
-import static eu.fasten.core.utils.Asserts.assertNotNull;
-import static eu.fasten.core.utils.Asserts.assertTrue;
+import static dev.c0ps.commons.Asserts.assertNotNull;
+import static dev.c0ps.commons.Asserts.assertTrue;
 
 import java.util.LinkedHashSet;
 import java.util.Set;

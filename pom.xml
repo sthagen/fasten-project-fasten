@@ -296,6 +296,10 @@
             <id>github-cops-lab-io</id>
             <url>https://maven.pkg.github.com/cops-lab/io/</url>
         </repository>
+        <repository>
+            <id>github-cops-lab-commons</id>
+            <url>https://maven.pkg.github.com/cops-lab/commons/</url>
+        </repository>
     </repositories>
 
     <distributionManagement>
