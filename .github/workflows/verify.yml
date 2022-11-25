@@ -23,12 +23,21 @@ jobs:
         with:
           java-version: ${{ matrix.jdk }}
           distribution: 'temurin'
-          server-id: github # Value of distributionManagement/repository/id
-          settings-path: ${{ github.workspace }} # location of settings.xml
+
+      - uses: s4u/maven-settings-action@v2.8.0
+        with:
+          # avoid a default entry for "github"
+          githubServer: false
+          servers: >
+            [
+              { "id": "github", "username": "${{ github.actor }}", "password": "${env.GITHUB_TOKEN}" },
+              { "id": "github-cops-lab-test-utils", "username": "${{ github.actor }}", "password": "${env.GITHUB_TOKEN}" },
+              { "id": "github-cops-lab-commons", "username": "${{ github.actor }}", "password": "${env.GITHUB_TOKEN}" }
+            ]
 
       - name: Build Project (Maven)
         # "install" needed for the build of restapi
-        run: mvn -B -ntp clean install -s ${{ github.workspace }}/settings.xml
+        run: mvn -B -ntp clean install
         env:
           # auth necessary to access GitHub Maven registries
           GITHUB_TOKEN: ${{ github.token }}
@@ -36,7 +45,7 @@ jobs:
       - name: Build REST API (Maven)
         run: |
           cd analyzer/restapi-plugin
-          mvn -B -ntp clean verify spring-boot:repackage -s ${{ github.workspace }}/settings.xml
+          mvn -B -ntp clean verify spring-boot:repackage
         env:
           # auth necessary to access GitHub Maven registries
           GITHUB_TOKEN: ${{ github.token }}
